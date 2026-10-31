@@ -1,0 +1,506 @@
+/* =========================================================================
+   LITTLETALES — DESIGN SYSTEM & GLOBAL STYLES (Pure Vanilla CSS)
+   Harmonious palette: Sky blue, Cream, Warm Yellow, Soft Peach, Mint Green,
+   Lavender, Coral, Forest Green.
+   Fonts: Fredoka & Nunito.
+   Touch targets >= 44px, accessible focus outlines, reduced-motion support.
+   ========================================================================= */
+
+:root {
+  --font-heading: 'Fredoka', cursive, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* LittleTales Color Palette */
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #fef9f2;
+  --color-cream-200: #faedd9;
+
+  --color-yellow-100: #fef9c3;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+
+  --color-peach-100: #ffedd5;
+  --color-peach-300: #fdba74;
+  --color-peach-500: #f97316;
+
+  --color-mint-100: #dcfce7;
+  --color-mint-300: #86efac;
+  --color-mint-500: #22c55e;
+  --color-forest-700: #15803d;
+  --color-forest-900: #14532d;
+
+  --color-lavender-100: #f3e8ff;
+  --color-lavender-300: #d8b4fe;
+  --color-lavender-500: #a855f7;
+
+  --color-coral-100: #ffe4e6;
+  --color-coral-300: #fda4af;
+  --color-coral-500: #f43f5e;
+
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-dark: #0f172a;
+
+  --shadow-soft: 0 4px 20px -2px rgba(14, 165, 233, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 10px 30px -5px rgba(30, 41, 59, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --shadow-glow: 0 0 25px rgba(250, 204, 21, 0.45);
+  --shadow-button: 0 4px 12px rgba(14, 165, 233, 0.28);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-cream-50);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #fdfbf7 0%, #f0f9ff 100%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-dark);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* =========================================================================
+   ACCESSIBILITY: FOCUS & TOUCH TARGETS
+   ========================================================================= */
+
+button, a, input, select, [role="button"], [tabindex="0"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-sky-500);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* =========================================================================
+   LAYOUT UTILITIES
+   ========================================================================= */
+
+.app-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    padding: 0 1rem;
+  }
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.text-center { text-align: center; }
+
+/* =========================================================================
+   BUTTON STYLES
+   ========================================================================= */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 2px solid #bae6fd;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: var(--color-text-dark);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: #bae6fd;
+  color: #0284c7;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.15);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #78350f;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 2px solid #fef08a;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+}
+
+.btn-accent:disabled, .btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================= */
+
+@keyframes gentleBreathe {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.015);
+  }
+}
+
+@keyframes hop {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-26px) scale(0.96, 1.05);
+  }
+  60% {
+    transform: translateY(-12px) scale(1.02, 0.98);
+  }
+  80% {
+    transform: translateY(2px) scale(1.04, 0.96);
+  }
+}
+
+@keyframes earWiggleLeft {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(6deg); }
+}
+
+@keyframes earWiggleRight {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(8deg); }
+  75% { transform: rotate(-6deg); }
+}
+
+@keyframes bounceShort {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes floatCosmic {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes turtleWaddle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes spoutBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes bubbleRise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-30px) scale(1.05); opacity: 0.8; }
+  100% { transform: translateY(-60px) scale(1); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(25px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  70% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-gentle-breathe {
+  animation: gentleBreathe 4s ease-in-out infinite;
+}
+
+.animate-hop {
+  animation: hop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-ear-wiggle-left {
+  animation: earWiggleLeft 0.5s ease-in-out;
+}
+
+.animate-ear-wiggle-right {
+  animation: earWiggleRight 0.5s ease-in-out;
+}
+
+.animate-bounce-short {
+  animation: bounceShort 0.6s ease-in-out;
+}
+
+.animate-float-cosmic {
+  animation: floatCosmic 5s ease-in-out infinite;
+}
+
+.animate-turtle-waddle {
+  animation: turtleWaddle 1s ease-in-out;
+}
+
+.animate-spout-bounce {
+  animation: spoutBounce 0.8s ease-in-out;
+}
+
+.animate-bubble-rise {
+  animation: bubbleRise 4s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-float-cloud {
+  animation: floatCloud 12s ease-in-out infinite;
+}
+
+.animate-pop-in {
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* =========================================================================
+   2D PARALLAX SCENE CONTAINER
+   ========================================================================= */
+
+.parallax-stage {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.15);
+  background: #f8fafc;
+  user-select: none;
+}
+
+@media (max-width: 1024px) {
+  .parallax-stage {
+    height: 440px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .parallax-stage {
+    height: 360px;
+    border-radius: 18px;
+  }
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+/* =========================================================================
+   INTERACTIVE OBJECTS & SPEECH BUBBLES
+   ========================================================================= */
+
+.interactive-hotspot {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  border-radius: 9999px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+}
+
+.interactive-hotspot:hover {
+  transform: scale(1.12);
+}
+
+.interactive-hotspot:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 4px;
+}
+
+.speech-bubble {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #1e293b;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 18px;
+  border: 2px solid #bae6fd;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.18);
+  white-space: normal;
+  max-width: 260px;
+  text-align: center;
+  z-index: 50;
+  pointer-events: auto;
+  animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: #ffffff transparent transparent;
+  display: block;
+  width: 0;
+}
+
+/* =========================================================================
+   CARDS & GRIDS
+   ========================================================================= */
+
+.story-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 2px solid #f1f5f9;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px -8px rgba(15, 23, 42, 0.12);
+  border-color: #bae6fd;
+}
+
+/* =========================================================================
+   REDUCED MOTION SUPPORT
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .parallax-layer {
+    transition: none !important;
+    transform: none !important;
+  }
+}
